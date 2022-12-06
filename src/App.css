@@ -1,0 +1,110 @@
+.wrap{
+  position: absolute;
+  bottom: 35px;
+  right : -130px;
+}
+
+.Map_Container {
+  height :70vh;
+  width : 150vh;
+}
+.overlaybox {
+  position : relative;
+  width : 200px;
+  height: 260px;
+  background: url('../public/imgbox.png') no-repeat;
+  padding: 10px 10px;
+}
+
+.boxtitle {
+  position: relative;
+  font-size: 30px;
+  color: aliceblue;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 26px;
+  height: 26px;
+  background : url('../public/close.png');
+}
+
+
+.close:hover {cursor:pointer;}
+
+.imgbox{
+  width: 200px;
+  height: 100px;
+  margin-top: 5px;
+  overflow : hidden;
+}
+
+
+
+.picture{
+  position:relative;
+  width:100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.buttonbox{
+  width: 200px;
+  height: 90px;
+  margin-top: 10px;
+}
+
+.buttonbox {
+  background: #404668;
+  color: #ECEFF1;
+}
+
+.resultbutton {
+  margin-top: 7px;
+  margin-left: 10px;
+  outline: none;
+  color: aliceblue;
+}
+.resultbutton {
+  border-radius: 7px;
+  width: 180px;
+  height: 35px;
+  padding: 5px 25px;
+  border: 2px solid rgb(0, 0, 0);
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.resultbutton:after {
+  position: absolute;
+  content: "";
+  border-radius: 7px;
+  top: 3px;
+  left: 3.5px;
+  width: 95%;
+  height: 70%;
+  border: 1px solid rgb(255, 254, 254);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.resultbutton:hover:after {
+  opacity: 1;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
