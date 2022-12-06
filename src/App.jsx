@@ -50,7 +50,7 @@ const App = ({props})=>{
     
     let markerContainer={};
     let overlayContainer={};
-
+    let num=0
     for (const key in datacontainer){
       if ((key==="x_coor") || (key==="y_coor")){
         continue;
@@ -78,15 +78,18 @@ const App = ({props})=>{
             content: content,
             position: marker.getPosition()
           });
-          kakao.maps.event.addListener(marker, 'click', function(){
-            console.log("click");
-            overlay.setMap(map);
+          overlayContainer[key].push(overlay);
+
+          kakao.maps.event.addListener(marker, 'click', ()=>{
+            console.log(overlayContainer,num);
+            overlayContainer[key][num].setMap(map)
           })
+          num=num+1;
 
           markerContainer[key].push(marker);
-          overlayContainer[key].push(overlay);
         }
       }
+      num=0;
     } 
 
 
