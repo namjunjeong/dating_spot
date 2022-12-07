@@ -35,7 +35,7 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
-UserSchema.static.login = async function (id, password) {
+UserSchema.statics.login = async function (id, password) {
   const user = await this.findOne({ id });
 
   if (!user) throw Error("아이디가 올바르지 않습니다!");
