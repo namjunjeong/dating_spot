@@ -1,11 +1,12 @@
 import React,{useState} from 'react';
-import arr from './Firststep';
-import Display from './display';
+import arr from '../Firststep';
+import Display from '../display';
+import {useNavigate} from 'react-router-dom';
 
-let current = []; //여기다 선택정보 전부 저장됨
-function List({ num, kind }) {
+function Place() {
+    const navigate = useNavigate();
     const [arrr,setArrr] = useState([]);
-    let list = arr[num][1];
+    const list = arr.place;
     const [checkItems, setCheckItems] = useState([]);
     const handleCheck = (e) => {
         if (e.target.checked) {
@@ -26,22 +27,16 @@ function List({ num, kind }) {
                 }
             } 
         }
-        current.push(arrr);
-        console.log(current);
+        navigate("/final", {state : arrr})
         alert("현재 카테고리 선택항목 저장완료! 다음 카테고리를 선택해주세요!")
         setSend(true);
-    }
-    const [final,setFinal] = useState(false);
-    const onFinal = () => {
-        alert("해당 내역의 길찾기 시작")
-        setFinal(true);
     }
     return (
         <div>
           <h1 style={{
             fontSize:"3rem",
             textAlign:"center",
-            }}>{kind} 추천 리스트</h1>
+            }}>관광명소 추천 리스트</h1>
         <div  className="flex-container">
         {list.map((cate) => (
             <div>
@@ -59,15 +54,6 @@ function List({ num, kind }) {
         </div>
         <button
             style={{
-                marginBottom: "3rem",
-                width: "10%",
-                float: "right",
-                }}
-                onClick={onFinal}
-                disabled={final}
-                >현재 담은걸로 길찾기</button>
-        <button
-            style={{
             marginBottom: "3rem",
             marginRight: "6rem",
             width: "10%",
@@ -80,4 +66,4 @@ function List({ num, kind }) {
       );
 }   
 
-export default List;
+export default Place;
