@@ -7,7 +7,7 @@
   overflow: hidden;
   height: 100vh;
   /* 背景图 */
-  background-image: url("../images/background.png");
+  background-image: url("../images/background1.png");
   /* ------------------------------------------------------------- */
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -20,19 +20,20 @@
   left: 50%;
   transform: translate(-50%, -50%);
   /* 按钮大小 */
-  width: 450px;
-  height: 350px;
+  width: 200px;
+  height: 150px;
   /* --------------- */
   /* 字体大小 */
-  font-size: 120px;
+  font-size: 60px;
   /* ------------------- */
-  background: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  /*background: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);*/
+  background: linear-gradient(to right, white,white,white,white);
   border-radius: 50px;
   background-size: 400%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #000;
   text-transform: uppercase;
   z-index: 1;
   animation: streamer 8s infinite;
@@ -46,7 +47,7 @@
   bottom: -5px;
   right: -5px;
   z-index: -1;
-  background: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  background: linear-gradient(to right, white,white,white,white);
   border-radius: 50px;
   background-size: 400%;
   filter: blur(20px);
@@ -63,4 +64,26 @@
   100% {
     background-position: -400% 0;
   }
+}
+
+.word{
+  opacity: 0.9;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+
+  /* --------------- */
+  /* 字体大小 */
+  font-size: 70px;
+  /* ------------------- */
+ 
+  border-radius: 100px;
+  background-size: 100%;
+  display: flex;
+  align-items: 100px;
+  justify-content: center;
+  color: white;
+  text-transform: uppercase;
+  z-index: 1;
+  animation: streamer 8s infinite;
 }
