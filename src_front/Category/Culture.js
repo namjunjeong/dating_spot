@@ -27,7 +27,7 @@ function Culture() {
                 }
             } 
         }
-        navigate("/final", {state : arrr})
+        navigate("/final", { state : ["Culture",...arrr]});
         alert("현재 카테고리 선택항목 저장완료! 다음 카테고리를 선택해주세요!")
         setSend(true);
     }

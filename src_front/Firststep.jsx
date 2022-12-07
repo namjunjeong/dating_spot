@@ -1,17 +1,13 @@
 
 const image = "https://t1.daumcdn.net/cfile/tistory/99F5944B5DE3280804"
 const image2 = "https://www.bing.com/th?id=OIP.4KI6OKmLvjR84MyBEfwTUgHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
-const arr = {
+let arr = {
+    "x_coor" : 123.123214124,
+    "y_coor" : 123.124512345,
     "activity": [
         {"name": "act1","address": "JYP","image": image},
         {"name": "act2","address": "JYP2","image": image},
         {"name": "act3","address": "JYP3","image": image},
-        {"name": "act1","address": "JYP","image": image},
-        {"name": "act2","address": "JYP2","image": image},
-        {"name": "act3","address": "JYP3","image": image},
-        {"name": "act1","address": "JYP","image": image},
-        {"name": "act2","address": "JYP2","image": image},
-        {"name": "act3","address": "JYP3","image": image,}
     ],
     "alc": [
         {"name": "alc1","address": "Baek","image": image2},

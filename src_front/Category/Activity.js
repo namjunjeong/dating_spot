@@ -3,6 +3,7 @@ import arr from '../Firststep';
 import Display from '../display';
 import {useNavigate} from 'react-router-dom';
 
+
 function Activity() {
     const navigate = useNavigate();
     const [arrr,setArrr] = useState([]);
@@ -19,17 +20,18 @@ function Activity() {
         }
     }
     const [send,setSend] = useState(false);
-    const onSent = () => {
+    function onSent() {
         for (let v of list) {
-            for (let e of checkItems){
-                if (e === v.name){
-                    setArrr(arrr.push(v))
+            for (let i in checkItems){
+                if (checkItems[i] === v.name){
+                    setArrr(arrr.push(v));
                 }
             } 
         }
-        navigate("/Final", {state : arrr})
-        alert("현재 카테고리 선택항목 저장완료! 다음 카테고리를 선택해주세요!")
+        alert("현 카테고리 선택 목록 저장")
         setSend(true);
+        navigate("/Final", { state : ["Activity",...arrr]});
+        console.log(["Activity",...arrr])
     }
     return (
         <div>
@@ -63,6 +65,8 @@ function Activity() {
             disabled={send}
             >선택정보 저장</button>
         </div>
+        
+
       );
 }   
 
