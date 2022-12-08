@@ -1,36 +1,87 @@
 .wrap{
   position: absolute;
-  bottom: 35px;
+  bottom: 30px;
   right : -130px;
+}
+.rightbutton {
+  margin-top: 7px;
+  margin-left: 10px;
+  outline: none;
+  color: rgb(5, 5, 5);
+}
+.rightbutton {
+  border-radius: 7px;
+  width: 180px;
+  height: 50px;
+  padding: 5px 25px;
+  border: 2px solid #e9b1c6;
+  font-size: medium;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.rightbutton:after {
+  position: absolute;
+  content: "";
+  border-radius: 7px;
+  top: 3px;
+  left: 3.5px;
+  width: 95%;
+  height: 80%;
+  border: 1px solid #e9b1c6;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.rightbutton:hover:after {
+  opacity: 1;
+}
+.user{
+  height: 100vh;
+  width: 10%;
+  float: right;
+  margin-right: 5%;
+  padding-top: 10vh;
 }
 
 .Map_Container {
-  height :70vh;
-  width : 150vh;
+  position : absolute;
+  height : 90vh;
+  width : 80%;
+  float: left;
+  margin: 30px;
+  border-radius: 30px;
+  border : 5px solid #e9b1c6;
 }
 .overlaybox {
   position : relative;
   width : 200px;
-  height: 260px;
+  height: 245px;
   background: url('../public/imgbox.png') no-repeat;
-  padding: 10px 10px;
+  padding: 18px 10px;
+  border-radius: 30px;
 }
 
 .boxtitle {
+  width:200px;
+  height:30px;
+  left: 10px;
   position: relative;
-  font-size: 30px;
+  font-size:100%;
   color: aliceblue;
   text-align: center;
 }
-
-.close {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 26px;
-  height: 26px;
-  background : url('../public/close.png');
+.rate{
+  position : absolute;
+  right : 10px;
+  font-size : 100%;
+  color : aliceblue;
 }
+
 
 
 .close:hover {cursor:pointer;}
