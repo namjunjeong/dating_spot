@@ -1,4 +1,5 @@
-## OpenSource Software term Project - 💗 Shall We Date? 💗
+OpenSource Software term Project 
+## 💗 Shall We Date? 💗
 
 ### 📢 소개
 ```
@@ -8,7 +9,7 @@ Shall We Date는 데이트 장소를 기반으로 사용자가 선택한 카테�
 
 ### 📋 기능 요약
 ```
-1. Sahll We Date 시작!
+1. Shall We Date 시작!
 2. 원하는 위치를 지도에 선택하고, 원하는 데이트 카테고리를 선택합니다.
 3. 위치에 따른 카테고리 별 원하는 장소를 선택합니다.
 4. 해당 장소들의 경로를 확인합니다.
@@ -53,7 +54,7 @@ git clone https://github.com/namjunjeong/Dating_Spot.git
 ```
 
 ## 💡 Contributing
-당신의 새로운 아이디어로 기여하여 이 프로젝트를 발전시켜 주세요!
+당신의 새로운 아이디어로 이 프로젝트를 발전시켜 주세요!
 
 ```
 1. 프로젝트 fork하기
