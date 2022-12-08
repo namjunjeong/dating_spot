@@ -1,10 +1,10 @@
 import React from "react";
-import Start from "./Start/Start.jsx";
-import SelectCategory from "./Selectcategory/SelectCategory";
+import Start from "./start/Start.jsx";
+import SelectCategory from "./selectcategory/SelectCategory";
 import Result from "./Result/Result.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import Home from "./Recommend/src_front/Home.js";
+import Home from "./recommend/src_front/Home.js";
 
 const App = () => {
   return (

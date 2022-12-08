@@ -16,32 +16,7 @@ class Process extends React.Component {
 }
 
 const Recommend = () => {
-  const { Loc } = useLocation();
-  const data = async () => {
-    for (let i = 0; i < Loc.category.length; i++) {
-      await axios
-        .post("http://127.0.0.1:3000/data", {
-          x: Loc.x,
-          y: Loc.y,
-          category: Loc.category,
-        })
-        .then((response) => {
-          this.setState({
-            dat: response,
-            count: this.state.count + 1,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      if (this.state.count < 7) {
-        LoadingWithMask();
-      }
-    }
-    arr = this.state.dat;
-  };
-
-  data();
+  
 };
 
 export default Recommend;
