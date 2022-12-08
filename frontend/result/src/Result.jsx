@@ -3,8 +3,10 @@ import React, { useEffect ,useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
+/*카카오 api를 js에서 사용*/
 const {kakao} = window;
 
+/*key에 따라서 올바른 sprite 위치 정보 return*/
 const WhatCategory=(key)=>{
   let category;
   if (key==='stroll'){
@@ -28,12 +30,13 @@ const WhatCategory=(key)=>{
 }
 
 
-
+//메인함수
 const App = ()=>{
   const location = useLocation();
   const [recommend,setRecommend] = useState(false);
   const [datacontainer,setDatacontainer] = useState();
-  const addRecommend=(e)=>{
+
+  const addRecommend=(e)=>{//서버에 장소를 추가시키는 함수
     e.preventDefault();
     (async ()=>{
       await axios({
@@ -53,9 +56,7 @@ const App = ()=>{
 
 
   useEffect(()=> {
-
-
-    const MakeOverlay =(place_name,place_url,picture,x,y,rate)=>{
+    const MakeOverlay =(place_name,place_url,picture,x,y,rate)=>{//오버레이 html을 만들어주는 함수
       return(
         '<div class="wrap">'+
           '<div class="overlaybox">'+
@@ -76,7 +77,7 @@ const App = ()=>{
     
     let map_xcoor;
     let map_ycoor;
-    if (location.state === null){
+    if (location.state === null){//이전 컴포넌트로부터 받아온 state에서 중심 x좌표,y좌표 얻어오기
       map_xcoor = "126.923778562273";
       map_ycoor = "37.5568707448873";
     }else{
@@ -91,9 +92,11 @@ const App = ()=>{
       level: 3
     };
     const map = new kakao.maps.Map(container, options);
+    /* 지도생성 완료*/
 
-    setDatacontainer(location.state);
-    let markerImageSrc='https://ifh.cc/g/ORcQHb.png';
+    
+    setDatacontainer(location.state);//서버에 정보 추가를 위해 state 사용
+    let markerImageSrc='https://ifh.cc/g/ORcQHb.png';//marker sprite img
     
     let markerContainer=[];
     let overlayContainer=[];
@@ -102,13 +105,16 @@ const App = ()=>{
     let imagesize=new kakao.maps.Size(30,30);
     let CategoryImage;
     for (const key in datacontainer){
-      if ((key==="x_coor") || (key==="y_coor")){
+      if ((key==="x_coor") || (key==="y_coor")){//필요없는 데이터 continue
         continue;
       }else{
-        CategoryImage=WhatCategory(key);
-        for(var i=0; i<datacontainer[key].length;i++){
+
+        CategoryImage=WhatCategory(key);//key에 맞는 sprite img 추출
+        for(var i=0; i<datacontainer[key].length;i++){//키 별로 컨테이너를 돌며 데이터 marker, overlay 생성
           let data=datacontainer[key][i];
           let position=new kakao.maps.LatLng(data.y,data.x);
+
+          /* 마커 생성 */
           let imageOptions={
             spriteOrigin : CategoryImage,
             spriteSize: spriteMaxSize
@@ -120,13 +126,23 @@ const App = ()=>{
             image : markerImage
           })
           marker.flag=0;
+          /* 마커 생성 완료 */
 
+          /* 오버레이 생성 */
           var content = MakeOverlay(data.place_name,data.place_url,data.picture,data.x,data.y,data.rate)
           var overlay=new kakao.maps.CustomOverlay({
             content: content,
             position: marker.getPosition()
           });
+          /*오버레이 생성 완료 */
+
           overlayContainer.push(overlay);
+
+          /*
+          마커와 오버레이를 연결하기 위해 마커별로 인덱스 할당
+          오버레이 컨테이너에 마커 인덱스 순서대로 연결
+          이를통해 마커와 오버레이를 동기화
+          */
           marker.ind=num;
           kakao.maps.event.addListener(marker, 'click', ()=>{
             if(marker.flag===0){
@@ -137,14 +153,17 @@ const App = ()=>{
               marker.flag=0;
             }
           })
-          markerContainer.push(marker);
+
+          markerContainer.push(marker);//완성된 마커를 container에 push
           num=num+1;
         }
       }
     } 
+    //마커 지도에 생성
     for (var k=0;k< markerContainer.length;k++){
       markerContainer[k].setMap(map);
     }
+
   },[]); 
 
 
