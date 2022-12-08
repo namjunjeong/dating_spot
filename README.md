@@ -1,8 +1,4 @@
-# Dating_spot
-
-open source software term project
-
-## OpenSource Project - 💗 Shall We Date? 💗
+## OpenSource Software term Project - 💗 Shall We Date? 💗
 
 ### 📢 소개
 ```
