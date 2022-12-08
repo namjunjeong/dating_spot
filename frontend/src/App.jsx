@@ -1,6 +1,6 @@
 import React from "react";
 import Start from "./Start/Start.jsx";
-import SelectCategory from "./SelectCategory/SelectCategory.jsx";
+import SelectCategory from "./Selectcategory/SelectCategory";
 import Result from "./Result/Result.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";

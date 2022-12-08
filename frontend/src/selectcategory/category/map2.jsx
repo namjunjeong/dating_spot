@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { storeLocation } from "../../store/store.js";
+import { storeLocation } from "../../Store/store.js";
 
 const Location = () => {
   const [longitude, setLongitude] = useState();
