@@ -50,8 +50,8 @@ docker compose up
 ### Localhost
 
 ```
-1. http:localhost:3000 # 백엔드 서버
-2. http:localhost:3001 # 프론트 웹
+http:localhost:3000 # 백엔드 서버
+http:localhost:3001 # 프론트 웹
 ```
 
 ### 프로젝트 결과물
