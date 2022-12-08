@@ -35,7 +35,7 @@ git clone https://github.com/namjunjeong/Dating_Spot.git
 ### Backend Start
 
 ```
-    docker compose up
+docker compose up
 ```
 
 ### Frontend Start
