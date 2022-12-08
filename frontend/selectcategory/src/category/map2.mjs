@@ -1,4 +1,5 @@
 /*global kakao*/ 
+
 import React, { useEffect, useState} from 'react';
 import { useRecoilState, 
     useRecoilValue, 
@@ -14,7 +15,6 @@ const Location=()=>{
     const [location, setLocation] = useRecoilState(storeLocation);
 
     const location2 = useRecoilState(storeLocation);
-    
   useEffect(()=>{
     var container = document.getElementById('map');
     var options = {
@@ -64,13 +64,9 @@ const Location=()=>{
 
 
     return (
-      <>
-      <h2> 🔎 데이트 장소를 선택하세요! </h2>
         <div>
             <div id="map" style={{ width: '99%', height: '500px' }}></div>       
         </div>
-      <h2> 💗 데이트 카테고리를 선택하세요! </h2>
-      </>
     )
 }
 
