@@ -7,10 +7,7 @@ import {
   useSearchParams,
   Link,
 } from "react-router-dom";
-//import CategoryPage from './Category';
 import styled from "styled-components";
-
-//import './map.css'
 const { kakao } = window;
 
 class Map extends Component {

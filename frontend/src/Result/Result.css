@@ -1,7 +1,7 @@
-.wrap{
+.wrap {
   position: absolute;
   bottom: 30px;
-  right : -130px;
+  right: -130px;
 }
 
 .rightbutton {
@@ -17,7 +17,7 @@
   padding: 5px 25px;
   border: 2px solid #e9b1c6;
   font-size: medium;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
@@ -54,7 +54,7 @@
   padding: 5px 25px;
   border: 2px solid #e9b1c6;
   font-size: medium;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;
@@ -79,7 +79,7 @@
   opacity: 1;
 }
 
-.user{
+.user {
   height: 100vh;
   width: 10%;
   float: right;
@@ -87,15 +87,15 @@
   padding-top: 10vh;
 }
 
-.recommend{
+.recommend {
   position: absolute;
   font-size: larger;
   top: 50%;
   left: 50%;
-  transform:translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-.recommendbox{
+.recommendbox {
   position: relative;
   width: 100%;
   height: 50px;
@@ -103,61 +103,59 @@
 }
 
 .Map_Container {
-  position : absolute;
-  height : 90vh;
-  width : 80%;
+  position: absolute;
+  height: 90vh;
+  width: 80%;
   float: left;
   margin: 30px;
   border-radius: 30px;
-  border : 5px solid #e9b1c6;
+  border: 5px solid #e9b1c6;
 }
 .overlaybox {
-  position : relative;
-  width : 200px;
+  position: relative;
+  width: 200px;
   height: 245px;
-  background: url('../public/imgbox.png') no-repeat;
+  background: url("../../public/imgbox.png") no-repeat;
   padding: 18px 10px;
   border-radius: 30px;
 }
 
 .boxtitle {
-  width:200px;
-  height:30px;
+  width: 200px;
+  height: 30px;
   left: 10px;
   position: relative;
-  font-size:100%;
+  font-size: 100%;
   color: aliceblue;
   text-align: center;
 }
-.rate{
-  position : absolute;
-  right : 10px;
-  font-size : 100%;
-  color : aliceblue;
+.rate {
+  position: absolute;
+  right: 10px;
+  font-size: 100%;
+  color: aliceblue;
 }
 
+.close:hover {
+  cursor: pointer;
+}
 
-
-.close:hover {cursor:pointer;}
-
-.imgbox{
+.imgbox {
   width: 200px;
   height: 100px;
   margin-top: 5px;
-  overflow : hidden;
+  overflow: hidden;
 }
 
-
-
-.picture{
-  position:relative;
-  width:100%;
+.picture {
+  position: relative;
+  width: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-.buttonbox{
+.buttonbox {
   width: 200px;
   height: 90px;
   margin-top: 10px;
@@ -165,7 +163,7 @@
 
 .buttonbox {
   background: #404668;
-  color: #ECEFF1;
+  color: #eceff1;
 }
 
 .resultbutton {
@@ -180,7 +178,7 @@
   height: 35px;
   padding: 5px 25px;
   border: 2px solid rgb(0, 0, 0);
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 500;
   background: transparent;
   cursor: pointer;

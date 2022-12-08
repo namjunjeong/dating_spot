@@ -98,7 +98,7 @@ const CategoryPage = () => {
         </Button>
 
         <Link
-          to="/"
+          to="/result"
           state={{
             location: location2,
             category: category2,

@@ -1,4 +1,4 @@
-import "./App.css";
+import "./Result.css";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -30,7 +30,7 @@ const WhatCategory = (key) => {
 };
 
 //메인함수
-const App = () => {
+const Result = () => {
   const location = useLocation();
   const [recommend, setRecommend] = useState(false);
   const [datacontainer, setDatacontainer] = useState();
