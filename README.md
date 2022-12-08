@@ -16,6 +16,8 @@ Shall We Date는 데이트 장소를 기반으로 사용자가 선택한 카테�
 ```
 
 ### 🛠 기술
+<img width="1000" alt="스크린샷 2022-12-09 오전 3 49 45" src="https://user-images.githubusercontent.com/109661444/206541753-a681ba2f-372f-4a0d-aab3-354edf9ef8a9.png">
+
 ```
 - React, Javascript, Typescript, HTML, CSS
 - NodeJs, Docker, mongodb
