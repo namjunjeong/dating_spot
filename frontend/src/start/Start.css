@@ -1,0 +1,85 @@
+.container {
+width: 100%;
+overflow: hidden;
+height: 100vh;
+/* 背景图 */
+background-image: url("./images/background1.png");
+/* ------------------------------------------------------------- */
+background-repeat: no-repeat;
+background-size: 100% 100%;
+position: relative;
+}
+.button {
+opacity: 0.9;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+/* 按钮大小 */
+width: 200px;
+height: 150px;
+/* --------------- */
+/* 字体大小 */
+font-size: 60px;
+/* ------------------- */
+/*background: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);*/
+background: linear-gradient(to right, white,white,white,white);
+border-radius: 50px;
+background-size: 400%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #000;
+text-transform: uppercase;
+z-index: 1;
+animation: streamer 8s infinite;
+}
+.button::before {
+opacity: 0.8;
+content: "";
+position: absolute;
+top: -5px;
+left: -5px;
+bottom: -5px;
+right: -5px;
+z-index: -1;
+background: linear-gradient(to right, white,white,white,white);
+border-radius: 50px;
+background-size: 400%;
+filter: blur(20px);
+animation: streamer 8s infinite;
+}
+.video {
+position: absolute;
+z-index: 999;
+bottom: 10px;
+opacity: 0.7;
+}
+
+@keyframes streamer {
+100% {
+    background-position: -400% 0;
+}
+}
+
+.word{
+opacity: 0.9;
+position: absolute;
+top: 20%;
+left: 30%;
+
+/* --------------- */
+/* 字体大小 */
+font-size: 70px;
+/* ------------------- */
+
+border-radius: 100px;
+background-size: 100%;
+display: flex;
+align-items: 100px;
+justify-content: center;
+color: white;
+text-transform: uppercase;
+z-index: 1;
+animation: streamer 8s infinite;
+}

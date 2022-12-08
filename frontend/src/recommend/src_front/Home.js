@@ -8,7 +8,7 @@ import Place from './Category/Place';
 import Restaurant from './Category/Restaurant';
 import Shopping from './Category/Shopping';
 import Themepark from './Category/Themepark';
-import Final from './Category/Final';
+import Final from './Final';
 import './style.css';
 function Home() {
     return (

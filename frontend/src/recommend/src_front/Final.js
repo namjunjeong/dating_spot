@@ -1,7 +1,7 @@
 import {useLocation,useNavigate} from "react-router-dom";
 import React,{useState } from "react";
-import Display from "../display";
-import arr from "../App";
+import Display from "./display";
+import arr from "./App";
 import "../style.css"
 
 let received = {
