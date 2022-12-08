@@ -7,7 +7,7 @@ spotRoute.get("/", async (req, res) => {
   if (!req.session.user) return res.send("아직 로그인되지 않았습니다");
   try {
     const spot = await Spot.find();
-    return res.json(JSON.parse(spot));
+    return res.json(spot);
   } catch (err) {
     console.log(err);
     return res.status(500).send("서버 읽기 에러");
