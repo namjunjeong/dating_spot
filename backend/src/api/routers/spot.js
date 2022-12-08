@@ -19,11 +19,11 @@ spotRoute.post("/", async (req, res) => {
   const spot = { email: req.session.user.email, ...req.body };
   try {
     await Spot.create(spot);
+    return res.status(201).send("스팟 추가 성공");
   } catch (err) {
     console.log(err);
     return res.status(500).send("저장 에러");
   }
-  res.sendStatus(201);
 });
 
 export default spotRoute;
