@@ -1,4 +1,7 @@
+//import { setSelectionRange } from "@testing-library/user-event/dist/utils";
+//import React, { Link, useState } from "react";
 import styled from 'styled-components';
+//import Map from './map.mjs';
 import Location from './map2.mjs'
 import {atom} from 'recoil';
 import { storeState } from '../store/store.js';
@@ -9,7 +12,7 @@ import { useRecoilState,
   useSetRecoilState, 
   useResetRecoilState 
 } from 'recoil';
-
+//import './category.css';
 
 const CategoryPage = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -17,6 +20,8 @@ const CategoryPage = () => {
 
   const location2 = useRecoilValue(storeLocation);
   const category2 = useRecoilValue(storeState);
+  console.log(category2);
+  console.log(location2);
 
   const list = searchParams.getAll('filter')
 

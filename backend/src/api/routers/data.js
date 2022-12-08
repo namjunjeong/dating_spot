@@ -30,29 +30,32 @@ const category_group_code = {
 };
 
 const getDataFromUrl = async (url) => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
   const page = await browser.newPage();
 
   await page.goto(url, { waitUntil: "networkidle2" });
-  await page.waitForSelector(
-    "#mArticle > div.cont_essential > div:nth-child(1) > div.details_present > a > span.bg_present"
-  );
 
-  const name = await page.$eval(
-    "#mArticle > div.cont_essential > div:nth-child(1) > div.details_present > a > span.bg_present",
-    (el) => el.textContent
+  await page.waitForSelector(
+    "#mArticle > div.cont_essential > div:nth-child(1) > div.details_present > a > span"
   );
-  console.log(name);
 
   const data = await page.content();
   await browser.close();
 
   const $ = cheerio.load(data);
-  const res = $(
+  const image_url = $(
     "#mArticle > div.cont_essential > div:nth-child(1) > div.details_present > a > span.bg_present"
-  ).html();
+  ).attr("style");
 
-  console.log(res);
+  if (image_url !== undefined) image_url.match(/url\('(.*?)'/)[1];
+
+  const rate = $(
+    "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > a:nth-child(3) > span.color_b"
+  ).text();
+
+  return [image_url, rate.slice(0, -1)];
 };
 
 dataRoute.post("/", async (req, res) => {
@@ -80,31 +83,33 @@ dataRoute.post("/", async (req, res) => {
     },
   });
 
-  const output = {
-    x: req.body.x,
-    y: req.body.y,
+  const data = {
+    x: parseFloat(req.body.x),
+    y: parseFloat(req.body.y),
   };
 
-  documents = documents.map((data) => {
+  const list = [];
+
+  const promises = documents.map(async (data) => {
+    const [url, rate] = await getDataFromUrl(data["place_url"]);
+
     const newData = {};
     newData["place_name"] = data["place_name"];
-    newData["x"] = data["x"];
-    newData["y"] = data["y"];
+    newData["x"] = parseFloat(data["x"]);
+    newData["y"] = parseFloat(data["y"]);
     newData["place_url"] = data["place_url"];
-    newData["id"] = data["id"];
-    return newData;
+    newData["id"] = parseInt(data["id"]);
+    newData["picture_url"] = url;
+    newData["rate"] = parseInt(rate);
+
+    list.push(newData);
   });
 
-  output["list"] = documents;
+  await Promise.all(promises);
 
-  // await getDataFromUrl([
-  //   "http://place.map.kakao.com/1865345876",
-  //   "http://place.map.kakao.com/12276247",
-  //   "http://place.map.kakao.com/1280689916",
-  // ]);
-  await getDataFromUrl("https://place.map.kakao.com/1280689916");
+  data["list"] = list;
 
-  res.json(output).status(200);
+  res.json(data).status(200);
 });
 
 export default dataRoute;
