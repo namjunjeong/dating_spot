@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import axios from 'axios';
 // import Home from './Home';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -49,11 +49,24 @@ function Home (){
       },
     ]
   }
+  const onClick=()=>{
+    (async ()=>{
+      await axios({
+        url : 'http://127.0.0.1:3000/spot',
+        method : 'get'
+      }).then((response)=>{
+        console.log(response);
+      }).catch((error)=>{
+        console.log(error);
+      })
+    })();
+  }
   return(<div>
       <p>hello</p>
       <Link to="/App" state={sampledata}>
         <button>App으로 이동</button>
       </Link>
+      <button className='reco' onClick={onClick}>다른사람들거 보기</button>
     </div>
   )
 }
@@ -70,4 +83,3 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

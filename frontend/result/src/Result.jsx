@@ -1,12 +1,14 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect ,useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
+
 const {kakao} = window;
 
 const WhatCategory=(key)=>{
   let category;
   if (key==='stroll'){
-    category=new kakao.maps.Point(0,0);//00
+    category=new kakao.maps.Point(0,0);
   }else if(key==='cafe'){
     category=new kakao.maps.Point(0,30);
   }else if(key==='restaurant'){
@@ -25,15 +27,34 @@ const WhatCategory=(key)=>{
   return category;
 }
 
-const addRecommend=(e)=>{
-  e.preventDefault();
-  console.log('recommend');
-}
 
-const App = ({})=>{
+
+const App = ()=>{
   const location = useLocation();
+  const [recommend,setRecommend] = useState(false);
+  const [datacontainer,setDatacontainer] = useState();
+  const addRecommend=(e)=>{
+    e.preventDefault();
+    (async ()=>{
+      await axios({
+        url : "http://127.0.0.1:3000/spot",
+        method : "post",
+        data : datacontainer
+      }).then((response)=>{
+        if(response.status === 201){
+          console.log("스팟 추가 성공");
+          setRecommend(true);
+        }
+      }).catch((error)=>{
+        console.log("error");
+      })
+    })();
+  }
+
 
   useEffect(()=> {
+
+
     const MakeOverlay =(place_name,place_url,picture,x,y,rate)=>{
       return(
         '<div class="wrap">'+
@@ -71,7 +92,7 @@ const App = ({})=>{
     };
     const map = new kakao.maps.Map(container, options);
 
-    let datacontainer=location.state;
+    setDatacontainer(location.state);
     let markerImageSrc='https://ifh.cc/g/ORcQHb.png';
     
     let markerContainer=[];
@@ -121,8 +142,8 @@ const App = ({})=>{
         }
       }
     } 
-    for (var i=0;i< markerContainer.length;i++){
-      markerContainer[i].setMap(map);
+    for (var k=0;k< markerContainer.length;k++){
+      markerContainer[k].setMap(map);
     }
   },[]); 
 
@@ -133,9 +154,13 @@ const App = ({})=>{
       <div className="Map_Container" id='Map'></div>
       <div className="user">
         <div><Link to="/"><button className='rightbutton'>다시 검색하기</button></Link></div>
-        <button className="rightbutton" onClick={addRecommend}>내 결과 추천하기</button>
+        {(recommend===false) ? 
+        <button className="rightbuttondown" onClick={addRecommend}>내 결과 다른사람에게 추천하기</button> 
+        :
+        <div className="recommendbox"><span className="recommend">저장완료!</span></div>
+        }
       </div>
     </div>
   )
 }
-export default App;
+export default Result;
