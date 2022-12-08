@@ -66,7 +66,17 @@ const SpotSchema = new mongoose.Schema({
       rate: Number,
     },
   ],
-  hopping: [
+  shopping: [
+    {
+      place_name: String,
+      x: Number,
+      y: Number,
+      picture_url: String,
+      place_url: String,
+      rate: Number,
+    },
+  ],
+  pcroom: [
     {
       place_name: String,
       x: Number,
