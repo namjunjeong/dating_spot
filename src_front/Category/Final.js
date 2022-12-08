@@ -1,7 +1,7 @@
 import {useLocation,useNavigate} from "react-router-dom";
 import React,{useState } from "react";
 import Display from "../display";
-import arr from "../Firststep";
+import arr from "../App";
 import "../style.css"
 
 let received = {
@@ -36,8 +36,7 @@ function Final() {
     console.log(received)
     return (
         <div>
-            {key==="Activity" ? received.activity = state :
-            key==="Alc" ? received.alc = state :
+            {key==="Alc" ? received.alc = state :
             key==="Cafe" ? received.cafe = state :
             key==="Culture" ? received.culture = state :
             key==="Pcroom" ? received.pcroom = state :

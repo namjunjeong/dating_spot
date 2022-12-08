@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Link , Routes} from 'react-router-dom';
-import Activity from './Category/Activity';
 import Alc from './Category/Alc';
 import Cafe from './Category/Cafe';
 import Culture from './Category/Culture';
@@ -11,13 +10,11 @@ import Shopping from './Category/Shopping';
 import Themepark from './Category/Themepark';
 import Final from './Category/Final';
 import './style.css';
-
 function Home() {
     return (
         <div>
         <h1>카테고리를 선택해주세요</h1>
         <div className="flex-container">
-            <Link to="/Activity" style={{marginRight:"2rem", marginBottom:"2rem"}}><button>엑티비티</button></Link>
             <Link to="/Alc" style={{marginRight:"2rem"}}><button>술집</button></Link>
             <Link to="/Cafe" style={{marginRight:"2rem"}}><button>카페</button></Link>
             <Link to="/Culture" style={{marginRight:"2rem"}}><button>문화시설</button></Link>
@@ -28,7 +25,6 @@ function Home() {
             <Link to="/Themepark" style={{marginRight:"2rem"}}><button>테마파크</button></Link>
         </div>
         <Routes>
-            <Route path="/Activity" element={<Activity/>}/>
             <Route path="/Alc" element={<Alc/>} />
             <Route path="/Cafe" element={<Cafe/>} />
             <Route path="/Culture" element={<Culture/>} />

@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import arr from '../Firststep';
+import arr from '../App';
 import Display from '../display';
 import {useNavigate} from 'react-router-dom';
 

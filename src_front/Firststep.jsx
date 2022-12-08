@@ -4,13 +4,8 @@ const image2 = "https://www.bing.com/th?id=OIP.4KI6OKmLvjR84MyBEfwTUgHaE8&w=306&
 let arr = {
     "x_coor" : 123.123214124,
     "y_coor" : 123.124512345,
-    "activity": [
-        {"name": "act1","address": "JYP","image": image},
-        {"name": "act2","address": "JYP2","image": image},
-        {"name": "act3","address": "JYP3","image": image},
-    ],
     "alc": [
-        {"name": "alc1","address": "Baek","image": image2},
+        {"name": "alc1","address": "Baek","image": image2, "x": 1231.123},
         {"name": "alc2","address": "Baek1","image": image2},
         {"name": "alc3","address": "Baek2","image": image2}
     ],
