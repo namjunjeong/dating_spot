@@ -1,31 +1,33 @@
-import {useLocation} from "react-router-dom";
-import axios from 'axios'
-import LoadingWithMask from "./Category/Loading";
+import {useState} from 'react';
+import LoadingWithMask from "./Loading";
+import {Link} from 'react-router-dom';
 
+const list = {"x":123.12312321, "y":123521412, "cate": ["cafe","place"]};
+const lis = {
+  "x":123.12312321, 
+  "y":123521412,
+  "cafe": [{name: 123,add:123},{name:111,add:111}]
+} //받을 데이터
 
-const [arr,setArr] = useState({});
-const [count,setCount] = useState(0);
-
-const data = async() => {
-  const {Loc}=useLocation();
-  setArr({"x_coor": Loc.x, "y_coor" : Loc.y});
-  await axios.post("http://127.0.0.1:3000/data",{
-      x:Loc.x,
-      y:Loc.y,
-      category:Loc.category
-  })
-  .then(function(response) {
-    setArr({...arr,response});
-    setCount(count+1);
-    if (count <7){LoadingWithMask();}
-  })
-  .catch((error)=>{
-    console.log(error);
-  });
-  return arr;
+const Data = () => {
+  let state = list;
+  let arr = {};
+  const [count,setCount] = useState(0);
+  return (
+    <div>
+      {state.cate.map((c) => (
+        arr.coor_x = state.x,
+        arr.coor_y = state.y,
+        arr.cate = c,
+        //<컴포넌트 /> 로 보낸 데이터에 대한 리턴값으로 카테고리 별 상세 가게 정보 받아옴//
+        setCount(count+1)
+      ))
+      }
+    </div>
+  )
 }
 
-export default data;
+export default Data;
 
  
 
