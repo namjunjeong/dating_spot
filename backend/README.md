@@ -139,7 +139,7 @@ http://127.0.0.1:3000
         "place_name": "1984",
         "x": 126.922881704192,
         "y": 37.5573639089622,
-        "picture": "image.jpg",
+        "picture_url": "image.jpg",
         "place_url": "https://place.map.kakao.com/23634722",
         "id": 123,
         "rate": 4.7
@@ -148,9 +148,9 @@ http://127.0.0.1:3000
         "place_name": "카페공명",
         "x": 126.926352615326,
         "y": 37.5598708965573,
-        "picture": "image.jpg",
+        "picture_url": "image.jpg",
         "place_url": "https://place.map.kakao.com/1797970569",
-        "id": 123,
+        "id": 124,
         "rate": 3.8
       }
     ]
