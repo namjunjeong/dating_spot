@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Map from "./Map.jsx";
+import Map from "./map";
 import CategoryPage from "./Category.jsx";
 
 function Next() {

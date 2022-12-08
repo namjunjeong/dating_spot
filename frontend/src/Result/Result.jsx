@@ -33,7 +33,7 @@ const WhatCategory = (key) => {
 const Result = () => {
   const location = useLocation();
   const [recommend, setRecommend] = useState(false);
-  const [datacontainer, setDatacontainer] = useState();
+  const [datacontainerstate, setDatacontainerstate] = useState();
 
   const addRecommend = (e) => {
     //서버에 장소를 추가시키는 함수
@@ -42,7 +42,7 @@ const Result = () => {
       await axios({
         url: "http://127.0.0.1:3000/spot",
         method: "post",
-        data: datacontainer,
+        data: datacontainerstate,
       })
         .then((response) => {
           if (response.status === 201) {
@@ -97,8 +97,8 @@ const Result = () => {
       map_xcoor = "126.923778562273";
       map_ycoor = "37.5568707448873";
     } else {
-      map_xcoor = location.state.x_coor;
-      map_ycoor = location.state.y_coor;
+      map_xcoor = location.state.x;
+      map_ycoor = location.state.y;
     }
 
     /* 지도생성 */
@@ -109,8 +109,8 @@ const Result = () => {
     };
     const map = new kakao.maps.Map(container, options);
     /* 지도생성 완료*/
-
-    setDatacontainer(location.state); //서버에 정보 추가를 위해 state 사용
+    let datacontainer=location.state;
+    setDatacontainerstate(location.state); //서버에 정보 추가를 위해 state 사용
     let markerImageSrc = "https://ifh.cc/g/ORcQHb.png"; //marker sprite img
 
     let markerContainer = [];

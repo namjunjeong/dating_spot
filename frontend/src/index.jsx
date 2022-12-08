@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Start from './start/Start'
-import Result from './result/src/Result'
-import SelectCategory from './selectcategory/src/App'
+import Result from './result/Result'
+import SelectCategory from './selectcategory/SelectCategory'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 
 

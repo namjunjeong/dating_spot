@@ -1,7 +1,7 @@
 import React from "react";
-import Location from "./Category/Map2.jsx";
-import Next from "./Category/Nextpage.jsx";
-import CategoryPage from "./Category/Category.jsx";
+import Location from "./category/map2";
+import Next from "./category/Nextpage";
+import CategoryPage from "./category/Category";
 
 const SelectCategory = () => {
   return (
