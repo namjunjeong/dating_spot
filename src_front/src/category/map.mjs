@@ -2,12 +2,13 @@
 
 import React, {Component, useEffect, useState} from 'react';
 import { UNSAFE_NavigationContext, useNavigate, useSearchParams, Link } from "react-router-dom";
-import CategoryPage from './Category';
+//import CategoryPage from './Category';
 import styled from 'styled-components';
 
 
 //import './map.css'
 const { kakao } = window;
+
 
 class Map extends Component {
 
@@ -104,7 +105,7 @@ class Map extends Component {
         );
     }
 }
-
+export default Map;
 const divv = styled.div `
     width: '100%',
     display: 'inline-block',
@@ -142,4 +143,4 @@ const ButtonNext = styled.button`
 
 // };
 
-export default Map;
+

@@ -1,10 +1,11 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 //import './index.css';
-import Map from './category/map';
-import CategoryPage from './category/Category';
-import App from './App';
-import Next from './category/Nextpage';
+import Map from './category/map.mjs';
+import CategoryPage from './category/Category.mjs';
+import App from './App.mjs';
+import Next from './category/Nextpage.mjs';
 import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 //import reportWebVitals from './reportWebVitals';
@@ -21,6 +22,7 @@ import { BrowserRouter, BrowserRouter as Router, Route, Routes } from 'react-rou
 //   </React.StrictMode>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log(root);
 root.render( 
   <React.StrictMode>
     <BrowserRouter>

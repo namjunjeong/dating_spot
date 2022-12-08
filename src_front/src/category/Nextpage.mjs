@@ -1,6 +1,6 @@
 import { Link, Navigate, useNavigate } from "react-router-dom"
-import Map from './map';
-import CategoryPage from './Category';
+import Map from './map.mjs';
+import CategoryPage from './Category.mjs';
 
 function Next() {
     const navigate = useNavigate();
