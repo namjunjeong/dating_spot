@@ -6,7 +6,7 @@ function Next() {
   const navigate = useNavigate();
 
   const move = () => {
-    navigate("/next", {
+    navigate("/recommend", {
       state: {
         x: Map.state.x,
         y: Map.state.y,

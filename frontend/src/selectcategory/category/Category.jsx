@@ -10,9 +10,7 @@ const CategoryPage = () => {
 
   const location2 = useRecoilValue(storeLocation);
   const category2 = useRecoilValue(storeState);
-  console.log(category2);
-  console.log(location2);
-
+  console.log(location2,category2);
   const list = searchParams.getAll("filter");
 
   const addQuery = (e) => {
