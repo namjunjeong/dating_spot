@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { storeState } from "../../Store/store.js";
-import { storeLocation } from "../../Store/store.js";
+import { storeState } from "../../store/store.js";
+import { storeLocation } from "../../store/store.js";
 import { useSearchParams, Link } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 
