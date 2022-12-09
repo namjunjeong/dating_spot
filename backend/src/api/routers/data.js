@@ -49,7 +49,7 @@ const getDataFromUrl = async (url) => {
     "#mArticle > div.cont_essential > div:nth-child(1) > div.details_present > a > span.bg_present"
   ).attr("style");
 
-  if (image_url !== undefined) image_url = image_url.match(/url\('(.*?)'/)[1];
+  if (image_url !== undefined) image_url.match(/url\('(.*?)'/)[1];
 
   const rate = $(
     "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > a:nth-child(3) > span.color_b"
@@ -62,8 +62,8 @@ dataRoute.post("/", async (req, res) => {
   console.log(res.body);
   const x = req.body.x;
   const y = req.body.y;
-  const keyword = category_keyword_code[req.body.catagory];
-  const category = category_group_code[req.body.catagory];
+  const keyword = category_keyword_code[req.body.category];
+  const category = category_group_code[req.body.category];
   const url = `https://dapi.kakao.com/v2/local/search/keyword.json`;
 
   try {
