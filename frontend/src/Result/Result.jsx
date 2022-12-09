@@ -110,6 +110,7 @@ const Result = () => {
     const map = new kakao.maps.Map(container, options);
     /* 지도생성 완료*/
     let datacontainer=location.state;
+    console.log(datacontainer);
     setDatacontainerstate(location.state); //서버에 정보 추가를 위해 state 사용
     let markerImageSrc = "https://ifh.cc/g/ORcQHb.png"; //marker sprite img
 
