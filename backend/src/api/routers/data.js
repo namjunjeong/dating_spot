@@ -59,57 +59,62 @@ const getDataFromUrl = async (url) => {
 };
 
 dataRoute.post("/", async (req, res) => {
+  console.log(res.body);
   const x = req.body.x;
   const y = req.body.y;
   const keyword = category_keyword_code[req.body.catagory];
   const category = category_group_code[req.body.catagory];
   const url = `https://dapi.kakao.com/v2/local/search/keyword.json`;
 
-  let {
-    data: { documents },
-  } = await axios({
-    method: "get",
-    url: url,
-    headers: {
-      Authorization: `KakaoAK ${config.kakaokey}`,
-    },
-    params: {
-      query: keyword,
-      x: x,
-      y: y,
-      size: 10,
-      radius: 1000,
-      category_group_code: category,
-    },
-  });
+  try {
+    let {
+      data: { documents },
+    } = await axios({
+      method: "get",
+      url: url,
+      headers: {
+        Authorization: `KakaoAK ${config.kakaokey}`,
+      },
+      params: {
+        query: keyword,
+        x: x,
+        y: y,
+        size: 10,
+        radius: 1000,
+        category_group_code: category,
+      },
+    });
 
-  const data = {
-    x: parseFloat(req.body.x),
-    y: parseFloat(req.body.y),
-  };
+    const data = {
+      x: parseFloat(req.body.x),
+      y: parseFloat(req.body.y),
+    };
 
-  const list = [];
+    const list = [];
 
-  const promises = documents.map(async (data) => {
-    const [url, rate] = await getDataFromUrl(data["place_url"]);
+    const promises = documents.map(async (data) => {
+      const [url, rate] = await getDataFromUrl(data["place_url"]);
 
-    const newData = {};
-    newData["place_name"] = data["place_name"];
-    newData["x"] = parseFloat(data["x"]);
-    newData["y"] = parseFloat(data["y"]);
-    newData["place_url"] = data["place_url"];
-    newData["id"] = parseInt(data["id"]);
-    newData["picture_url"] = url;
-    newData["rate"] = parseInt(rate);
+      const newData = {};
+      newData["place_name"] = data["place_name"];
+      newData["x"] = parseFloat(data["x"]);
+      newData["y"] = parseFloat(data["y"]);
+      newData["place_url"] = data["place_url"];
+      newData["id"] = parseInt(data["id"]);
+      newData["picture_url"] = url;
+      newData["rate"] = parseInt(rate);
 
-    list.push(newData);
-  });
+      list.push(newData);
+    });
 
-  await Promise.all(promises);
+    await Promise.all(promises);
 
-  data["list"] = list;
+    data["list"] = list;
 
-  res.json(data).status(200);
+    return res.json(data).status(200);
+  } catch (err) {
+    return res.json(err);
+  }
 });
 
 export default dataRoute;
