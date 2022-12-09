@@ -49,7 +49,7 @@ const getDataFromUrl = async (url) => {
     "#mArticle > div.cont_essential > div:nth-child(1) > div.details_present > a > span.bg_present"
   ).attr("style");
 
-  if (image_url !== undefined) image_url.match(/url\('(.*?)'/)[1];
+  if (image_url !== undefined) image_url = image_url.match(/url\('(.*?)'/)[1];
 
   const rate = $(
     "#mArticle > div.cont_essential > div:nth-child(1) > div.place_details > div > div > a:nth-child(3) > span.color_b"
