@@ -27,17 +27,21 @@ function Home() {
     setMaxcat(categoryList.length);
     const data = async () => {
       for (let i = 0; i < categoryList.length; i++) {
+        let cate=categoryList[i]
         await axios({
           url : "http://127.0.0.1:3000/data", 
           method : "post",
           data : {
             "x": Loc.location[1],
             "y": Loc.location[0],
-            "category": categoryList[i]
+            "category": cate
           }
         }).then((response) => {
             setCurcat(curcat+1);
-            setDat(dat[categoryList[i]] = response.data.list)
+            setDat({
+              ...dat,
+              cate : response.data.list
+            })
           })
           .catch((error) => {
             console.log(error);
