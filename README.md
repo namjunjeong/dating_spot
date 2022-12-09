@@ -84,13 +84,14 @@ MIT License를 따릅니다.
 ```
 
 ## 📧 연락처
+```
 한성희 : dangyee@khu.ac.kr
 윤서진 : cosmos7@khu.ac.kr
 김태형 : leoryan@khu.ac.kr
 진형준 : joonyjin@khu.ac.kr
 정남준 : playjnj@khu.ac.kr 
-SUNJIYAO : 929420972@qq.com 입니다
-
+SUNJIYAO : 929420972@qq.com
+```
 
 
 
