@@ -1,16 +1,19 @@
 import {useLocation,useNavigate} from "react-router-dom";
-import React,{useState } from "react";
+import React,{useState, useEffect} from "react";
 import Display from "./display";
 import arr from "./Firststep";
 import "./style.css"
 
 let received = {
-    "x_coor" : arr.x_coor,
-    "y_coor" : arr.y_coor,
+    /*"x_coor" : realar.x_coor,
+    "y_coor" : realar.y_coor,*/
 };
 let dataa =[];
-function Final() {
-    
+function Final({arr}) {
+    useEffect(()=>{
+        received.x_corr = arr.x_coor;
+        received.y_corr = arr.y_coor;
+    },[]);
     const navigate = useNavigate();
     const {state} = useLocation();
     let key;

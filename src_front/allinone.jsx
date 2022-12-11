@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
 import arr from './Firststep';
 import Display from './display';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 
-function Category( {keys} ) {
+function Category( {keys, arr} ) {
     const navigate = useNavigate();
     const [arrr,setArrr] = useState([]);
     const list = arr[keys];
