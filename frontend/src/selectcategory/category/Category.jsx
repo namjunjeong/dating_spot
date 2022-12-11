@@ -10,6 +10,7 @@ const CategoryPage = () => {
 
   const location2 = useRecoilValue(storeLocation);
   const category2 = useRecoilValue(storeState);
+  console.log(location2)
   console.log(location2,category2);
   const list = searchParams.getAll("filter");
 
@@ -94,7 +95,7 @@ const CategoryPage = () => {
         >
           술
         </Button>
-
+        {location2[0]!=undefined ? 
         <Link
           to="/recommend"
           state={{
@@ -104,6 +105,9 @@ const CategoryPage = () => {
         >
           <ButtonNext>다음!</ButtonNext>
         </Link>
+        :
+        <Button style={{backgroundColor: "powderblue"}}> 지도를 클릭해 주세요!</Button>
+        }
       </Container>
     </>
   );
@@ -132,6 +136,20 @@ const Button = styled.button`
   border-radius: 20px;
   cursor: pointer;
 `;
+
+const nButton = styled.button`
+  margin-bottom: 20px;
+  margin-left: 5px;
+  width: 30%;
+  color: black;
+  background-color: ${({ isactive }) => (isactive ? "lightblue" : "pink")};
+  height: 50px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+`;
+
+
 const ButtonNext = styled.button`
   margin-bottom: 20px;
   margin-left: 5px;
