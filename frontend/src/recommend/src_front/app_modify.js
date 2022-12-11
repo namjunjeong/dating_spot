@@ -1,7 +1,7 @@
-import {useLocation ,useNavigate,Route,Routes} from "react-router-dom";
+import {useLocation ,useNavigate,Route,Routes, Link} from "react-router-dom";
 import {useState,useEffect} from "react";
+import Home from "./Home"
 import axios from 'axios'
-import Home from './Home';
 
 
 /*const lis = {
@@ -11,35 +11,51 @@ import Home from './Home';
 } //받을 데이터*/
 
 
-const data = async({List,Lis,setLis})=>{
-  for(let i=0; i<List.category.length;i++){
-    await axios.post("http://127.0.0.1:3000/data",{
-      x : List.x,
-      y : List.y,
-      category : List.category[i]
-      
-      }).then((response)=>{
-        setLis({...Lis, ...response})
-        console.log(Lis);
-    });
-  }
-};
 
+var Lis={}
 
 function Data(){
+  const data = async({List,setTest,setDatalist})=>{
+    Lis={"x": List.x, "y": List.y}
+    let temp=0;
+    for(let i=0; i<List.category.length;i++){
+      await axios.post("http://127.0.0.1:3000/data",{
+        x : List.x,
+        y : List.y,
+        category : List.category[i]
+        
+        }).then((response)=>{
+          var cat=List.category[i];
+          Lis[cat] = response.data.list;
+          temp+=1
+          if(temp==len){
+            setTest(1);
+          }
+      });
+    }
+  };
   const {list} = useLocation();//uselocation으로 List안에받아옴
-  const List = {"x":123.12312321, "y":123521412, "category": ["cafe","place"]};
+  const List = {"x":126.923778562273, "y":37.5568707448873, "category": ["stroll","cafe"]};
   let navigate = useNavigate();
-  const [Lis,setLis]=useState({"x": List.x, "y": List.y});//무한 렌더링을 해결하기 위해 useState, useEffect 사용
-  useEffect(()=>{
-    data({List,Lis,setLis});
+  const len=List.category.length;
+  const [test,setTest]=useState(0);
+  const [datalist,setDatalist]=useState();
+  useEffect(()=>{//무한 렌더링을 해결하기 위해 useState, useEffect 사용
+    data({List,setTest,setDatalist});
   },[]);
+
+  useEffect(()=>{
+    setDatalist(Lis)
+    console.log("yes")
+  },[test])
+
   return (
     <div>
-      <h1>데이터 로딩중... </h1>
-      <button onClick={navigate("/home",{state: Lis})}>데이터 넘기기 </button>
+      {test==1 ? <div>good</div> : <div> loading... </div>}
+      <h1>여기를 렌더링 해서 클릭하면 home으로 넘어가면서 데이터 넘기는 건 어떠할까용?</h1>
+      <Link to="/home" state={Lis}>데이터 넘기기</Link>
       <Routes>
-      <Route path="/home" element={<Home />}/>
+        <Route path="/home/*" element={<Home />}/>
       </Routes>
     </div>
   )
