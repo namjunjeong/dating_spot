@@ -14,6 +14,7 @@ const category_list={ //카테고리 목록
 }
 
 /*------------------------샘플 데이터------------------------*/
+
 let info={
     x : 126.9256873598537,
     y : 37.558486548510515,
@@ -21,6 +22,7 @@ let info={
 }
 let data=["cafe","tour","shopping"];
 /*------------------------샘플 데이터------------------------*/
+
 
 /*
 데이터를 iterate 하게 보여주기 위한 함수
@@ -39,6 +41,7 @@ const Show=({data})=>{
 }
 
 
+
 //메인 컴포넌트
 
 class Process extends React.Component {
@@ -50,6 +53,7 @@ class Process extends React.Component {
         }
     }
 /*
+
 component가 로딩된 이후 실행
 API에 request를 보내는 axios 함수를 동기적으로 실행하여 setState가 데이터를 놓치지 않도록 구현
 카테고리별로 검색이 끝날 때 마다 검색결과를 output으로 넘기고 count를 +1
@@ -84,6 +88,7 @@ API에 request를 보내는 axios 함수를 동기적으로 실행하여 setStat
         return <div>
             {this.state.count>0 ? this.state.output.map(value=><Show data={value}/>   ) : <p> loading </p>}
         </div>
+
   }
 }
 

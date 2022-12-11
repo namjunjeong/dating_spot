@@ -1,0 +1,213 @@
+.wrap {
+  position: absolute;
+  bottom: 30px;
+  right: -130px;
+}
+
+.rightbutton {
+  margin-top: 7px;
+  margin-left: 10px;
+  outline: none;
+  color: rgb(5, 5, 5);
+}
+.rightbutton {
+  border-radius: 7px;
+  width: 180px;
+  height: 50px;
+  padding: 5px 25px;
+  border: 2px solid #e9b1c6;
+  font-size: medium;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.rightbutton:after {
+  position: absolute;
+  content: "";
+  border-radius: 7px;
+  top: 3px;
+  left: 3.5px;
+  width: 95%;
+  height: 80%;
+  border: 1px solid #e9b1c6;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.rightbutton:hover:after {
+  opacity: 1;
+}
+.rightbuttondown {
+  margin-top: 7px;
+  margin-left: 10px;
+  outline: none;
+  color: rgb(5, 5, 5);
+}
+.rightbuttondown {
+  border-radius: 7px;
+  width: 180px;
+  height: 60px;
+  padding: 5px 25px;
+  border: 2px solid #e9b1c6;
+  font-size: medium;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.rightbuttondown:after {
+  position: absolute;
+  content: "";
+  border-radius: 7px;
+  top: 3px;
+  left: 3.5px;
+  width: 95%;
+  height: 86%;
+  border: 1px solid #e9b1c6;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.rightbuttondown:hover:after {
+  opacity: 1;
+}
+
+.user {
+  height: 100vh;
+  width: 10%;
+  float: right;
+  margin-right: 5%;
+  padding-top: 10vh;
+}
+
+.recommend {
+  position: absolute;
+  font-size: larger;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.recommendbox {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  font-size: large;
+}
+
+.Map_Container {
+  position: absolute;
+  height: 90vh;
+  width: 80%;
+  float: left;
+  margin: 30px;
+  border-radius: 30px;
+  border: 5px solid #e9b1c6;
+}
+.overlaybox {
+  position: relative;
+  width: 200px;
+  height: 245px;
+  background: url("../../public/imgbox.png") no-repeat;
+  padding: 18px 10px;
+  border-radius: 30px;
+}
+
+.boxtitle {
+  width: 200px;
+  height: 30px;
+  left: 10px;
+  position: relative;
+  font-size: 100%;
+  color: aliceblue;
+  text-align: center;
+}
+.rate {
+  position: absolute;
+  right: 10px;
+  font-size: 100%;
+  color: aliceblue;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.imgbox {
+  width: 200px;
+  height: 100px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.picture {
+  position: relative;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.buttonbox {
+  width: 200px;
+  height: 90px;
+  margin-top: 10px;
+}
+
+.buttonbox {
+  background: #404668;
+  color: #eceff1;
+}
+
+.resultbutton {
+  margin-top: 7px;
+  margin-left: 10px;
+  outline: none;
+  color: aliceblue;
+}
+.resultbutton {
+  border-radius: 7px;
+  width: 180px;
+  height: 35px;
+  padding: 5px 25px;
+  border: 2px solid rgb(0, 0, 0);
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.resultbutton:after {
+  position: absolute;
+  content: "";
+  border-radius: 7px;
+  top: 3px;
+  left: 3.5px;
+  width: 95%;
+  height: 70%;
+  border: 1px solid rgb(255, 254, 254);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.resultbutton:hover:after {
+  opacity: 1;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
