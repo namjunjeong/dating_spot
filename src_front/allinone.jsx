@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
-import arr from '../App';
-import Display from '../display';
+import arr from './Firststep';
+import Display from './display';
 import {useNavigate} from 'react-router-dom';
 
-function Restaurant() {
+function Category( {keys} ) {
     const navigate = useNavigate();
     const [arrr,setArrr] = useState([]);
-    const list = arr.restaurant;
+    const list = arr[keys];
     const [checkItems, setCheckItems] = useState([]);
     const handleCheck = (e) => {
         if (e.target.checked) {
@@ -27,7 +27,8 @@ function Restaurant() {
                 }
             } 
         }
-        navigate("/final", { state : ["Restaurant",...arrr]});
+        console.log(arrr)
+        navigate("/final", { state : [keys,...arrr]});
         alert("현재 카테고리 선택항목 저장완료! 다음 카테고리를 선택해주세요!")
         setSend(true);
     }
@@ -36,10 +37,10 @@ function Restaurant() {
           <h1 style={{
             fontSize:"3rem",
             textAlign:"center",
-            }}>음식점 추천 리스트</h1>
+            }}>{keys} 추천 리스트</h1>
         <div  className="flex-container">
         {list.map((cate) => (
-            <div>
+            <div id={cate} key={cate.name}>
             <Display name={cate.name} address = {cate.address} photo={cate.image} />
             <input 
               type="checkbox"
@@ -66,4 +67,4 @@ function Restaurant() {
       );
 }   
 
-export default Restaurant;
+export default Category;

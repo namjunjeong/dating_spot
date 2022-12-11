@@ -4,7 +4,7 @@ import './style.css';
 function Display( { name, address, photo} ) {
     return ( 
     <div style={{marginLeft:"2rem"}}>
-        <div className="flex-container">
+        <div className="flex-container" key={name}>
         <img src={photo} alt={name} style = 
         {{
           width: '250px',

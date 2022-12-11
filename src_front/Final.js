@@ -1,8 +1,8 @@
 import {useLocation,useNavigate} from "react-router-dom";
 import React,{useState } from "react";
-import Display from "../display";
-import arr from "../App";
-import "../style.css"
+import Display from "./display";
+import arr from "./Firststep";
+import "./style.css"
 
 let received = {
     "x_coor" : arr.x_coor,
@@ -10,13 +10,15 @@ let received = {
 };
 let dataa =[];
 function Final() {
+    
     const navigate = useNavigate();
     const {state} = useLocation();
-    let key =state[0];
+    let key;
     const [control,setControl] = useState(true);
     const Controller = () => {
         if (control === true){
             setControl(false);
+            key=state[0];
             state.splice(0,1);
             dataa.push(state);
         }
@@ -33,22 +35,22 @@ function Final() {
         alert("취소")
         window.location.reload();
     }
-    console.log(received)
+    console.log(received);
     return (
         <div>
-            {key==="Alc" ? received.alc = state :
-            key==="Cafe" ? received.cafe = state :
-            key==="Culture" ? received.culture = state :
-            key==="Pcroom" ? received.pcroom = state :
-            key==="Place" ? received.place = state :
-            key==="Restaurant" ? received.restaurant = state :
-            key==="Shopping" ? received.shopping = state :
-            key==="Themepark" ? received.themepark = state : null}
+            {key==="alc" ? received.alc = state :
+            key==="cafe" ? received.cafe = state :
+            key==="culture" ? received.culture = state :
+            key==="pcroom" ? received.pcroom = state :
+            key==="place" ? received.place = state :
+            key==="restaurant" ? received.restaurant = state :
+            key==="shopping" ? received.shopping = state :
+            key==="themepark" ? received.themepark = state : null}
             <h1>선택하신 내역</h1>
             {dataa.map((_,i) => (
             <div className="flex-container">
                 {dataa[i].map((each) => (
-                    <Display name={each.name} address = {each.address} photo={each.image} />
+                    <Display name={each.name} address = {each.address} photo={each.image}/>
                 ))}
             </div>
             ))}
