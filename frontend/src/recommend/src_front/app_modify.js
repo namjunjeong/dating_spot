@@ -2,6 +2,8 @@ import {useLocation ,useNavigate,Route,Routes, Link} from "react-router-dom";
 import {useState,useEffect} from "react";
 import Home from "./Home"
 import axios from 'axios'
+import LoadingWithMask from "./Category/Loading";
+
 
 
 /*const lis = {
@@ -53,8 +55,13 @@ function Data(){
 
   return (
     <div>
-      {test==1 ? <div>good</div> : <div> loading </div>}
-      <Link to="/home" state={Lis}>데이터 넘기기</Link>
+      {test==1 ? <Link to="/home" state={Lis}>데이터 넘기기</Link> : 
+      <div>
+        <div> {LoadingWithMask()} </div>
+        <div style={{fontSize : "50px" }}> 로딩중!</div>
+      </div>
+      }
+      
       <Routes>
         <Route path="/home/*" element={<Home />}/>
       </Routes>
