@@ -5,7 +5,6 @@ import Category from './allinone';
 import './style.css';
 import arr from './Firststep';
 import Button from "./Button";
-import Data from "./app_modify";
 function Home() {
     const {state} = useLocation();
     const list = [];
@@ -19,10 +18,9 @@ function Home() {
         {/* <Data /> 
            만약 Data 렌더링 했으면, ***arr from ./Firststep 대신에*** 
                                    *** useLocation()으로 state에 *** 받아준 후 쓰면 됨*/}
-        <Data />
         <h1>카테고리를 선택해주세요</h1>
         <div className="flex-container">
-        {list.map((a) => (
+        {list.slice(2).map((a) => (
             <Button cate={a} key={a}/>
         ))}
         </div>
