@@ -34,8 +34,10 @@ function Data(){
       });
     }
   };
-  const {list} = useLocation();//uselocation으로 List안에받아옴
-  const List = {"x":126.923778562273, "y":37.5568707448873, "category": ["stroll","cafe"]};
+  const location = useLocation();//uselocation으로 List안에받아옴
+  console.log(location.state)
+  const List = {"x":location.state.location[1], "y":location.state.location[0], "category": location.state.category};
+  console.log(List)
   let navigate = useNavigate();
   const len=List.category.length;
   const [test,setTest]=useState(0);
@@ -51,8 +53,7 @@ function Data(){
 
   return (
     <div>
-      {test==1 ? <div>good</div> : <div> loading... </div>}
-      <h1>여기를 렌더링 해서 클릭하면 home으로 넘어가면서 데이터 넘기는 건 어떠할까용?</h1>
+      {test==1 ? <div>good</div> : <div> loading </div>}
       <Link to="/home" state={Lis}>데이터 넘기기</Link>
       <Routes>
         <Route path="/home/*" element={<Home />}/>
