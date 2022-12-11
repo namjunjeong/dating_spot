@@ -6,4 +6,5 @@ export default {
   databaseURL: process.env.DATABASE_URI,
   secret: process.env.SECRET,
   kakaokey: process.env.KAKAOKEY,
+  browerPath: process.env.BROWSER_PATH,
 };

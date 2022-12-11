@@ -9,7 +9,7 @@ RUN apk update && apk add --no-cache nmap && \
       harfbuzz \
       "freetype>2.8" \
       ttf-freefont \
-      nss
+      nss 
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 

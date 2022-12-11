@@ -1,6 +1,6 @@
 import express from "express";
 import axios from "axios";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import * as cheerio from "cheerio";
 
 import config from "../../config/index.js";
@@ -31,7 +31,10 @@ const category_group_code = {
 
 const getDataFromUrl = async (url) => {
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--single-process"],
+    devtools: false,
+    headless: true,
+    executablePath: config.browerPath,
   });
   const page = await browser.newPage();
 
@@ -59,7 +62,7 @@ const getDataFromUrl = async (url) => {
 };
 
 dataRoute.post("/", async (req, res) => {
-  console.log(res.body);
+  console.log(req.body);
   const x = req.body.x;
   const y = req.body.y;
   const keyword = category_keyword_code[req.body.category];
