@@ -19,13 +19,8 @@ const data = async({List,Lis,setLis})=>{
       category : List.category[i]
       
       }).then((response)=>{
-        for (let key in response) {
-          console.log(key);
-          if (key != "x" && key != "y"){ //x좌표와 y좌표는 이미 처음 state에 담았기 때문에 제외//
-            setLis({...Lis, key: response[key]}); // ex) {...., cafe: [{..},{..}]} 요렇게 되는 거 확인//
-          }
-        }
-        
+        setLis({...Lis, ...response})
+        console.log(Lis);
     });
   }
 };
@@ -41,7 +36,7 @@ function Data(){
   },[]);
   return (
     <div>
-      <h1>여기를 렌더링 해서 클릭하면 home으로 넘어가면서 데이터 넘기는 건 어떠할까용?</h1>
+      <h1>데이터 로딩중... </h1>
       <button onClick={navigate("/home",{state: Lis})}>데이터 넘기기 </button>
       <Routes>
       <Route path="/home" element={<Home />}/>
