@@ -20,6 +20,7 @@
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-size: 30px;
     border: 1px solid green;
     background-color: rgba(0,0,0,0);
     color: green;
@@ -33,3 +34,54 @@
 
 
 
+@keyframes ldio-a769tkbmjns {
+    0% { transform: rotate(0deg) }
+   50% { transform: rotate(22.5deg) }
+  100% { transform: rotate(45deg) }
+}
+.ldio-a769tkbmjns > div {
+  transform-origin: 100px 100px;
+  animation: ldio-a769tkbmjns 0.2s infinite linear;
+}
+.ldio-a769tkbmjns > div div {
+    position: absolute;
+    width: 22px;
+    height: 152px;
+    background: #e15b64;
+    left: 100px;
+    top: 100px;
+    transform: translate(-50%,-50%);
+}
+.ldio-a769tkbmjns > div div:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.ldio-a769tkbmjns > div div:nth-child(6) {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 50%;
+}.ldio-a769tkbmjns > div div:nth-child(3) {
+  transform: translate(-50%,-50%) rotate(45deg)
+}.ldio-a769tkbmjns > div div:nth-child(4) {
+  transform: translate(-50%,-50%) rotate(90deg)
+}.ldio-a769tkbmjns > div div:nth-child(5) {
+  transform: translate(-50%,-50%) rotate(135deg)
+}
+.loadingio-spinner-gear-1190ukb01ma {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: #ffffff;
+}
+.ldio-a769tkbmjns {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-a769tkbmjns div { box-sizing: content-box; }

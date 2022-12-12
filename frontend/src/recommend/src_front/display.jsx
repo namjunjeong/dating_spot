@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-
+import default_photo from "./img/default_photo.png"
 function Display( { name, photo,rating} ) {
   const rate = () => {
     let result = [];
@@ -15,7 +15,7 @@ function Display( { name, photo,rating} ) {
     return ( 
     <div style={{marginLeft:"2rem"}}>
         <div className="flex-container" key={name}>
-        <img src={photo} alt={name} style = 
+        <img src={photo!="ed" ? photo : default_photo} alt={name} style = 
         {{
           width: '250px',
           height: '250px',
@@ -25,7 +25,7 @@ function Display( { name, photo,rating} ) {
         <div style={{fontsize:"8px"}}><b>Info:</b></div>
         <li >가게명:{" "+name}</li>
         <div class="starRev" >
-          {rate()};
+          {rate()}
         </div>
     </div>
     );

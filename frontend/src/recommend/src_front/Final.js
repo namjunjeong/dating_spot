@@ -5,13 +5,18 @@ import "./style.css"
 
 let received = {};
 
-let dataa =[];
+
 function Final({arr}) {
+    let dataa =[];
     const navigate = useNavigate();
-    const {state} = useLocation();
+    const location = useLocation();
     let key;
     let collection = [];
-    for (let i=0;i<state.length;i++){
+    arr=location.state;
+    console.log(arr)
+    /* 
+    
+    for (let i=0;i<arr.data.length;i++){
         if (i==0){key = state[i];}
         else{
             collection.push(state[i]);
@@ -19,14 +24,21 @@ function Final({arr}) {
     }
     dataa.push(collection);
     received.x = arr.x;
-    received.y = arr.y;
+    received.y = arr.y; */
+    for(let key in arr){
+        if(key === "x" || key ==="y") continue
+        for(let dat of arr[key]) {
+            console.log(dat)
+            dataa.push(dat)
+        }
+    }
+
     const onFinal = () => {
-        navigate("/result", {state : received})
+        navigate("/result", {state : arr})
         alert("선택 내역의 길찾기 시작")
-        console.log(received)
     }
     const onClick = () => {
-        navigate("/home")
+        navigate("/selectcategory")
         alert("취소")
         window.location.reload();
     }
@@ -34,13 +46,11 @@ function Final({arr}) {
     return (
         <div>
             <h1>선택하신 내역</h1>
-            {dataa.map((_,i) => (
             <div className="flex-container">
-                {dataa[i].map((each)=> (
-                    <Display name={each.place_name} photo={String(each.picture_url).substring(22,String(each.picture_url).length-2)}/>
+                {dataa.map((each)=> (
+                    <Display name={each.place_name} photo={String(each.picture_url).substring(22,String(each.picture_url).length-2)} rating={each.rate}/>
                 ))}
             </div>
-            ))}
             <button
             style={{
                 marginBottom: "3rem",

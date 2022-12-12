@@ -1,10 +1,13 @@
 import React,{useState} from 'react';
 import Display from './display';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import './style.css'
 
 function Category( {keys,arr} ) {
     const navigate = useNavigate();
+    const location=useLocation();
+    arr=location.state;
+    console.log(arr)
     const [arrr,setArrr] = useState([]);
     const [checkItems, setCheckItems] = useState([]);
     const handleCheck = (e) => {
@@ -25,8 +28,31 @@ function Category( {keys,arr} ) {
                 }
             } 
         }
-        navigate("/final", { state : [keys,...arrr]});
-        alert("현재 카테고리 선택항목 저장완료! 다음 카테고리를 선택해주세요!")
+        let st={
+            x : arr.x,
+            y : arr.y
+        }
+        console.log(checkItems)
+        for(const dat of checkItems){
+            for(const key in arr){
+                if(key=="x" || key=="y") continue;
+                else{
+                    var found=arr[key].find(e=>e.place_name===dat)
+                    if(found!=undefined) {
+                        if(key in st) st[key].push(found);
+                        else{
+                            st[key]=[];
+                            st[key].push(found);
+                        }
+                        console.log(st)
+                    }
+                }
+            }
+        }
+
+
+        navigate("/final", { state : st});
+        alert("선택 완료! 선택하신 리스트를 확인해 보세요!")
     }
     return (
         <div>
@@ -54,9 +80,10 @@ function Category( {keys,arr} ) {
             marginRight: "6rem",
             width: "10%",
             float: "right",
+            fontSize : "30px"
             }}
             onClick={onSent}
-            >선택정보 저장</button>
+            >선택 완료</button>
         </div>
       );
 }   

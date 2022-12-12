@@ -1,11 +1,31 @@
 import {useLocation ,useNavigate,Route,Routes, Link} from "react-router-dom";
 import {useState,useEffect} from "react";
-import Home from "./Home"
-import axios from 'axios'
-import LoadingWithMask from "./Category/Loading";
+import Home from "./Home";
+import axios from 'axios';
+import ReactLoading from 'react-loading';
 
 
-
+function Loading({type, color, message}) {
+  return (
+    <div class="contentWrap">
+      <div style={{
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)"
+      }}>
+        <h2>{message}</h2>
+        <h2>창을 닫지 말아주세요.</h2>
+        <ReactLoading
+          type={type}
+          color={color}
+          height={'80%'}
+          width={'80%'} />
+        <h2>카테고리가 많을시 로딩시간이 길 수 있습니다</h2>
+      </div>
+    </div>
+  );
+}
 /*const lis = {
   "x":123.12312321, 
   "y":123521412,
@@ -37,9 +57,7 @@ function Data(){
     }
   };
   const location = useLocation();//uselocation으로 List안에받아옴
-  console.log(location.state)
   const List = {"x":location.state.location[1], "y":location.state.location[0], "category": location.state.category};
-  console.log(List)
   let navigate = useNavigate();
   const len=List.category.length;
   const [test,setTest]=useState(0);
@@ -50,21 +68,22 @@ function Data(){
 
   useEffect(()=>{
     setDatalist(Lis)
-    console.log("yes")
   },[test])
 
   return (
     <div>
-      {test==1 ? <Link to="/home" state={Lis}>데이터 넘기기</Link> : 
+      {test==1 ? 
       <div>
-        <div> {LoadingWithMask()} </div>
-        <div style={{fontSize : "50px" }}> 로딩중!</div>
+        <h2> 데이터 로딩 완료! </h2>
+        <Link to="/home" state={Lis}>
+          <button style={{"font-size":"50px"}}>카테고리 선택하기</button>  
+        </Link>
+      </div> : 
+      <div>
+        <div>  </div>
+        <div><Loading type="spin" color="#e9b1c6" message="데이터를 로딩중입니다!"/></div>
       </div>
       }
-      
-      <Routes>
-        <Route path="/home/*" element={<Home />}/>
-      </Routes>
     </div>
   )
 }
