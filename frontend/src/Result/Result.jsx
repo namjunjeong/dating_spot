@@ -2,6 +2,7 @@ import "./Result.css";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import default_photo from "./img/default_photo.png"
 
 /*카카오 api를 js에서 사용*/
 const { kakao } = window;
@@ -34,7 +35,6 @@ const Result = () => {
   const location = useLocation();
   const [recommend, setRecommend] = useState(false);
   const [datacontainerstate, setDatacontainerstate] = useState();
-
   const addRecommend = (e) => {
     //서버에 장소를 추가시키는 함수
     e.preventDefault();
@@ -46,12 +46,11 @@ const Result = () => {
       })
         .then((response) => {
           if (response.status === 201) {
-            console.log("스팟 추가 성공");
             setRecommend(true);
           }
         })
         .catch((error) => {
-          console.log("error");
+          alert("다른사람의 기록을 또 추천할 수 없어요!")
         });
     })();
   };
@@ -59,10 +58,13 @@ const Result = () => {
   useEffect(() => {
     const MakeOverlay = (place_name, place_url, picture, x, y, rate) => {
       //오버레이 html을 만들어주는 함수
+      if(rate==null)rate=0;
+      if(picture==undefined) picture="https://ifh.cc/g/qoaQgA.png"
+      else picture='//'+String(picture).substring(22,String(picture).length-2)
       return (
         '<div class="wrap">' +
         '<div class="overlaybox">' +
-        "<div>" +
+        '<div class="textbox">' +
         '<span class="boxtitle">' +
         place_name +
         "</span>" +
@@ -70,8 +72,8 @@ const Result = () => {
         rate +
         "</span>" +
         "</div>" +
-        '<div class="imgbox"><img class="picture" src="//' +
-        picture +
+        '<div class="imgbox"><img class="picture" src="' +
+        picture+
         '"/></div>' +
         '<div class="buttonbox">' +
         '<div><button class="detail resultbutton" type="button" onclick="window.open(\'' +
@@ -105,12 +107,11 @@ const Result = () => {
     const container = document.getElementById("Map");
     const options = {
       center: new kakao.maps.LatLng(map_ycoor, map_xcoor),
-      level: 3,
+      level: 4,
     };
     const map = new kakao.maps.Map(container, options);
     /* 지도생성 완료*/
     let datacontainer=location.state;
-    console.log(datacontainer);
     setDatacontainerstate(location.state); //서버에 정보 추가를 위해 state 사용
     let markerImageSrc = "https://ifh.cc/g/ORcQHb.png"; //marker sprite img
 
@@ -121,7 +122,7 @@ const Result = () => {
     let imagesize = new kakao.maps.Size(30, 30);
     let CategoryImage;
     for (const key in datacontainer) {
-      if (key === "x_coor" || key === "y_coor") {
+      if (key === "x" || key === "y") {
         //필요없는 데이터 continue
         continue;
       } else {
@@ -153,7 +154,7 @@ const Result = () => {
           var content = MakeOverlay(
             data.place_name,
             data.place_url,
-            data.picture,
+            data.picture_url,
             data.x,
             data.y,
             data.rate
