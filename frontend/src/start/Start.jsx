@@ -15,7 +15,8 @@ const Start = () => {
       })
         .then((response) => {
           datacontainer = response.data;
-          let rand = Math.floor(Math.random() * (datacontainer.length - 1));
+          let rand = Math.floor(Math.random() * (datacontainer.length ));
+          console.log(rand)
           navigate("/result", { state: datacontainer[rand] });
         })
         .catch((error) => {
