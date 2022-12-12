@@ -1,7 +1,17 @@
 import React from 'react';
 import './style.css';
 
-function Display( { name, address, photo} ) {
+function Display( { name, photo,rating} ) {
+  const rate = () => {
+    let result = [];
+    for (let i =0;i<rating;i++) {
+       result.push([<span class="starR on"></span>])
+    }
+    for (let i =0;i<5-rating;i++){
+      result.push([<span class="starR"></span>])
+    }
+    return result;
+  }
     return ( 
     <div style={{marginLeft:"2rem"}}>
         <div className="flex-container" key={name}>
@@ -10,13 +20,16 @@ function Display( { name, address, photo} ) {
           width: '250px',
           height: '250px',
         }}
-        /></div>
-        <div>
-            <div>이름 : {name}</div>
-            <div>주소 : {address}</div>
+        />
+        </div>
+        <div style={{fontsize:"8px"}}><b>Info:</b></div>
+        <li >가게명:{" "+name}</li>
+        <div class="starRev" >
+          {rate()};
         </div>
     </div>
     );
   }
 
 export default Display;
+

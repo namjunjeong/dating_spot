@@ -1,59 +1,43 @@
 import {useLocation,useNavigate} from "react-router-dom";
-import React,{useState, useEffect} from "react";
+import React from "react";
 import Display from "./display";
-import arr from "./Firststep";
 import "./style.css"
 
-let received = {
-    /*"x_coor" : realar.x_coor,
-    "y_coor" : realar.y_coor,*/
-};
+let received = {};
+
 let dataa =[];
 function Final({arr}) {
-    useEffect(()=>{
-        received.x_corr = arr.x_coor;
-        received.y_corr = arr.y_coor;
-    },[]);
     const navigate = useNavigate();
     const {state} = useLocation();
     let key;
-    const [control,setControl] = useState(true);
-    const Controller = () => {
-        if (control === true){
-            setControl(false);
-            key=state[0];
-            state.splice(0,1);
-            dataa.push(state);
+    let collection = [];
+    for (let i=0;i<state.length;i++){
+        if (i==0){key = state[i];}
+        else{
+            collection.push(state[i]);
         }
     }
-    Controller();
-    const [final,setFinal] = useState(false);
+    dataa.push(collection);
+    received.x = arr.x;
+    received.y = arr.y;
     const onFinal = () => {
         navigate("/result", {state : received})
         alert("선택 내역의 길찾기 시작")
-        setFinal(true);
+        console.log(received)
     }
     const onClick = () => {
-        navigate("/")
+        navigate("/home")
         alert("취소")
         window.location.reload();
     }
-    console.log(received);
+    received[key] = collection;
     return (
         <div>
-            {key==="alc" ? received.alc = state :
-            key==="cafe" ? received.cafe = state :
-            key==="culture" ? received.culture = state :
-            key==="pcroom" ? received.pcroom = state :
-            key==="place" ? received.place = state :
-            key==="restaurant" ? received.restaurant = state :
-            key==="shopping" ? received.shopping = state :
-            key==="themepark" ? received.themepark = state : null}
             <h1>선택하신 내역</h1>
             {dataa.map((_,i) => (
             <div className="flex-container">
-                {dataa[i].map((each) => (
-                    <Display name={each.name} address = {each.address} photo={each.image}/>
+                {dataa[i].map((each)=> (
+                    <Display name={each.place_name} photo={String(each.picture_url).substring(22,String(each.picture_url).length-2)}/>
                 ))}
             </div>
             ))}
@@ -74,7 +58,6 @@ function Final({arr}) {
                 float: "right",
                 }}
                 onClick={onFinal}
-                disabled={final}
                 >길찾기
             </button>
         </div>

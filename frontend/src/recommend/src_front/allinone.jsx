@@ -1,12 +1,11 @@
 import React,{useState} from 'react';
-import arr from './Firststep';
 import Display from './display';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import './style.css'
 
-function Category( {keys, arr} ) {
+function Category( {keys,arr} ) {
     const navigate = useNavigate();
     const [arrr,setArrr] = useState([]);
-    const list = arr[keys];
     const [checkItems, setCheckItems] = useState([]);
     const handleCheck = (e) => {
         if (e.target.checked) {
@@ -18,19 +17,16 @@ function Category( {keys, arr} ) {
           console.log('선택 해제');
         }
     }
-    const [send,setSend] = useState(false);
     const onSent = () => {
-        for (let v of list) {
+        for (let v of arr[keys]) {
             for (let e of checkItems){
-                if (e === v.name){
+                if (e === v.place_name){
                     setArrr(arrr.push(v))
                 }
             } 
         }
-        console.log(arrr)
         navigate("/final", { state : [keys,...arrr]});
         alert("현재 카테고리 선택항목 저장완료! 다음 카테고리를 선택해주세요!")
-        setSend(true);
     }
     return (
         <div>
@@ -39,17 +35,16 @@ function Category( {keys, arr} ) {
             textAlign:"center",
             }}>{keys} 추천 리스트</h1>
         <div  className="flex-container">
-        {list.map((cate) => (
-            <div id={cate} key={cate.name}>
-            <Display name={cate.name} address = {cate.address} photo={cate.image} />
+        {arr[keys].map((cate) => (
+            <div key={cate.picture_url}>
+            <Display name={cate.place_name} photo={String(cate.picture_url).substring(22,String(cate.picture_url).length-2)} rating={cate.rate}/>
             <input 
               type="checkbox"
-              id = {cate.name}
-              value = {cate}
-              checked={checkItems.includes(cate.name)? true:false}
+              id = {cate.place_name}
+              checked={checkItems.includes(cate.place_name)? true:false}
               onChange={handleCheck}
               style ={{marginLeft:"2rem", marginBottom:"2rem"}}
-            ></input>선택   
+            ></input>선택  
             </div>
         ))}
         </div>
@@ -61,7 +56,6 @@ function Category( {keys, arr} ) {
             float: "right",
             }}
             onClick={onSent}
-            disabled={send}
             >선택정보 저장</button>
         </div>
       );
