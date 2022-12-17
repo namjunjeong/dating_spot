@@ -8,7 +8,6 @@ background-repeat: no-repeat;
 background-size: 100% 100vh;
 overflow: hidden;
 position: fixed;
-border: 3px solid blue;
 }
 .buttonBox{
     position: relative;
@@ -18,7 +17,6 @@ border: 3px solid blue;
     top:30%;
     flex-direction: row;
     flex-wrap: wrap;
-    border : 3px solid red;
     margin: 0 auto;
     justify-content: center;
 }
@@ -26,7 +24,7 @@ border: 3px solid blue;
 .btn {
     width: 30vh;
     height: 10vh;
-    margin-left: 15vh;
+    margin-right: 3vh;
     border: 2px solid rgb(240, 130, 181);
     font-family: 'Lato', sans-serif;
     font-weight: 800;
@@ -85,12 +83,11 @@ border: 3px solid blue;
 
     /* --------------- */
     /* 字体大小 */
-    font-size: 10vh;
+    font-size: 300%;
     /* ------------------- */
 
     text-align: center;
     color: rgb(255, 255, 255);
     text-transform: uppercase;
-    border: 3px solid green;
 
 }
