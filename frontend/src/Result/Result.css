@@ -30,13 +30,14 @@
 
 .Container{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
 }
 .Map_Container {
-  position: absolute;
+  position: relative;
   height: 90vh;
   width: 80%;
-  float: left;
   margin: 30px;
   border-radius: 30px;
   border: 5px solid #e9b1c6;
