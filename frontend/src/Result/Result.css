@@ -9,7 +9,6 @@
 .user {
   height: 100vh;
   width: 10%;
-  float: right;
   margin-right: 5%;
   padding-top: 10vh;
 }
@@ -29,6 +28,10 @@
   font-size: large;
 }
 
+.Container{
+  display: flex;
+
+}
 .Map_Container {
   position: absolute;
   height: 90vh;
