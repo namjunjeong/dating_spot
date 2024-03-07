@@ -1,6 +1,5 @@
 import React from "react";
 import axios from 'axios';
-var kakaokey="5819749ef21ee7d0aeff60d9a2178b99";
 
 const category_list={ //카테고리 목록
     "cafe" : ["카페","CE7"],
